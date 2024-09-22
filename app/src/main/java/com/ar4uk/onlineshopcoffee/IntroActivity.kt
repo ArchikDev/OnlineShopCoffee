@@ -8,13 +8,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.ar4uk.onlineshopcoffee.databinding.ActivityIntroBinding
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity() {
 
     lateinit var binding: ActivityIntroBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
