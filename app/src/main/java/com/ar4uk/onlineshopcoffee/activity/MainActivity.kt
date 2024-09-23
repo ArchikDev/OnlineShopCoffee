@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ar4uk.onlineshopcoffee.R
 import com.ar4uk.onlineshopcoffee.ViewModel.MainViewModel
 import com.ar4uk.onlineshopcoffee.adapter.CategoryAdapter
+import com.ar4uk.onlineshopcoffee.adapter.OfferAdapter
 import com.ar4uk.onlineshopcoffee.adapter.PopularAdapter
 import com.ar4uk.onlineshopcoffee.databinding.ActivityMainBinding
 
@@ -27,6 +28,23 @@ class MainActivity : BaseActivity() {
 
         initCategory()
         initPopular()
+        initOffers()
+    }
+
+    private fun initOffers() {
+        binding.progressBarOffer.visibility = View.VISIBLE
+
+        viewModel.popular.observe(this, Observer {
+            binding.recyclerViewOffer.layoutManager =
+                LinearLayoutManager(
+                    this@MainActivity,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+            binding.recyclerViewOffer.adapter = OfferAdapter(it)
+            binding.progressBarOffer.visibility = View.GONE
+        })
+        viewModel.loadOffer()
     }
 
     private fun initPopular() {

@@ -15,9 +15,11 @@ class MainViewModel:ViewModel() {
 
     private val _category = MutableLiveData<MutableList<CategoryModel>>()
     private val _popular = MutableLiveData<MutableList<ItemsModel>>()
+    private val _offer = MutableLiveData<MutableList<ItemsModel>>()
 
     val category: LiveData<MutableList<CategoryModel>> = _category
     val popular: LiveData<MutableList<ItemsModel>> = _popular
+    val offer: LiveData<MutableList<ItemsModel>> = _offer
 
     fun loadCategory() {
         firebaseDatabase
@@ -59,6 +61,30 @@ class MainViewModel:ViewModel() {
                     }
 
                     _popular.value = lists
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+    }
+
+    fun loadOffer() {
+        firebaseDatabase
+            .getReference("Offers")
+            .addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val lists = mutableListOf<ItemsModel>()
+
+                    for (childSnapshot in snapshot.children) {
+                        val list = childSnapshot.getValue(ItemsModel::class.java)
+
+                        if (list != null) {
+                            lists.add(list)
+                        }
+                    }
+
+                    _offer.value = lists
                 }
 
                 override fun onCancelled(error: DatabaseError) {
