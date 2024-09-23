@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ar4uk.onlineshopcoffee.R
 import com.ar4uk.onlineshopcoffee.ViewModel.MainViewModel
 import com.ar4uk.onlineshopcoffee.adapter.CategoryAdapter
+import com.ar4uk.onlineshopcoffee.adapter.PopularAdapter
 import com.ar4uk.onlineshopcoffee.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {
@@ -25,6 +26,23 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
 
         initCategory()
+        initPopular()
+    }
+
+    private fun initPopular() {
+        binding.progressBarPopular.visibility = View.VISIBLE
+
+        viewModel.popular.observe(this, Observer {
+            binding.recyclerViewPopular.layoutManager =
+                LinearLayoutManager(
+                    this@MainActivity,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+            binding.recyclerViewPopular.adapter = PopularAdapter(it)
+            binding.progressBarPopular.visibility = View.GONE
+        })
+        viewModel.loadPopular()
     }
 
     private fun initCategory() {
