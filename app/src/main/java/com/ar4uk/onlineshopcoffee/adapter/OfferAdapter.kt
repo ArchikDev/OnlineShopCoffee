@@ -32,7 +32,7 @@ class OfferAdapter(val items: MutableList<ItemsModel>): RecyclerView.Adapter<Off
         holder.binding.priceOffer.text = "$" + item.price.toString()
 
        Glide.with(holder.itemView.context)
-           .load(item.picUrl[0])
+           .load(item.picUrl?.get(0))
            .into(holder.binding.picOffer)
 
         holder.itemView.setOnClickListener {

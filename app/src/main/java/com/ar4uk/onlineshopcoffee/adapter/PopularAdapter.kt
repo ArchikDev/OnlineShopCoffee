@@ -1,13 +1,13 @@
 package com.ar4uk.onlineshopcoffee.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ar4uk.onlineshopcoffee.Model.CategoryModel
 import com.ar4uk.onlineshopcoffee.Model.ItemsModel
-import com.ar4uk.onlineshopcoffee.R
-import com.ar4uk.onlineshopcoffee.databinding.ViewholderCategoryBinding
+import com.ar4uk.onlineshopcoffee.activity.DetailActivity
 import com.ar4uk.onlineshopcoffee.databinding.ViewholderPopularBinding
 import com.bumptech.glide.Glide
 
@@ -33,11 +33,15 @@ class PopularAdapter(val items: MutableList<ItemsModel>): RecyclerView.Adapter<P
         holder.binding.extraTxt.text = item.extra
 
        Glide.with(holder.itemView.context)
-           .load(item.picUrl[0])
+           .load(item.picUrl?.get(0))
            .into(holder.binding.pic)
 
         holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
 
+            intent.putExtra("object", item)
+
+            holder.itemView.context.startActivity(intent)
         }
     }
 
