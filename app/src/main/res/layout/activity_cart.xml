@@ -24,7 +24,7 @@
                 >
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/backBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -43,7 +43,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                    app:layout_constraintTop_toTopOf="@+id/backBtn" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -62,7 +62,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextText2"
+                    android:id="@+id/copounEdt"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -75,7 +75,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button"
+                    android:id="@+id/applyCopounBtn"
                     style="@android:style/Widget.Button"
                     android:layout_width="100dp"
                     android:layout_height="38dp"
@@ -102,7 +102,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/totalFreeTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$-"
@@ -115,17 +115,22 @@
                 <TextView
                     android:id="@+id/textView12"
                     android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text="Delivery"
                     app:layout_constraintTop_toBottomOf="@+id/subtotalTxt"
                     />
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/deliveryTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text="$-"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/textView12"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -134,19 +139,57 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="TextView"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Total Tax"
                     app:layout_constraintTop_toBottomOf="@+id/textView12"
                     />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/taxTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text="$-"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/textView15"
                     app:layout_constraintEnd_toEndOf="parent" />
 
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Total"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15"
+                    />
+
+                <TextView
+                    android:id="@+id/totalTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$-"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView17"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/checkOutBtn"
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.Button"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@drawable/orange_bg"
+                android:text="Procced to Checkout" />
 
         </LinearLayout>
     </ScrollView>
